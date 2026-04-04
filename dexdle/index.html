@@ -4,13 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dexdle</title>
-    <link rel="stylesheet" href="dexdle\style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
+
+<body class="bg-dark text-light">
+
+<div class="container vh-100 d-flex flex-column justify-content-center align-items-center">
+
+    <!-- Header -->
     <div class="text-center mb-4">
         <img src="*" alt="Dexdle - The Pokédex Entry Guessing Game">
         <p class="text-muted">Guess the Pokémon from its Pokédex Entry</p>
     </div>
-    
+
+    <!-- Game card -->
+    <div class="pokedex">
+        <div class="top-bar">
+            <div class="indicator red"></div>
+            <div class="indicator yellow"></div>
+            <div class="indicator green"></div>
+            <div class="pokedex-number">No. <span id="pokeNumber">000</span></div>
+        </div>
+        <div class="screen d-flex">
+            <div class="sprite-panel">
+                <div class="info-panel">
+                    <p id="entry"></p>
+                </div>       
+            </div>
+            <!-- Feedback -->
+            <div id="feedback"></div>
+        </div>
+        
+
+        <!-- Input -->
+        <div class="input-area">
+            <input 
+                type="text"
+                id="guessInput"
+                placeholder="Enter Pokémon name..."
+                autocomplete="off"
+            >
+            <button id="submitBtn" onclick="checkGuess()">Submit</button>
+
+            <!-- Dropdown -->
+            <ul id="suggestions" class="list-group position-absolute w-100"></ul>
+        </div>
+
+        <button id="restartBtn" class="btn btn-primary mt-3 d-none w-100" onclick="restartGame()">
+            Restart Game
+        </button>
+
+        
+    </div>
+
+    <!-- Streak -->
+    <div class="stats">
+        <span class="me-3">🔥 Streak: <span id="streak">0</span></span>
+        <span class="me-3">❤️ Lives: <span id="lives">3</span></span>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
