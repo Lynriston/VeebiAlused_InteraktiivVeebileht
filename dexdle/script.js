@@ -105,7 +105,6 @@ function checkGuess() {
         feedback.innerHTML = `❌ Wrong! It was <b>${capitalize(currentPokemon.name)}</b>`;
         feedback.className = "mt-3 text-danger fw-bold";
         document.getElementById("sprite").classList.remove("hidden-sprite");
-        streak = 0;
     }
 
     updateStats();
@@ -152,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function gameOver() {
     document.getElementById("entry").innerText = "💀 Game Over!";
-    document.getElementById("feedback").innerHTML = `Final streak: <b>${streak}</b>`;
+    document.getElementById("feedback").innerHTML = `Final score: <b>${streak}</b>`;
 
     document.getElementById("guessInput").disabled = true;
 
