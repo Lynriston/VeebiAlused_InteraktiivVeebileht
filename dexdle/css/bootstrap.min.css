@@ -93,7 +93,8 @@
 .info-panel {
   flex: 2;
   padding-left: 8px;
-  font-size: 10px;
+  padding-top: 8px;
+  font-size: 12px;
   line-height: 1.2;
 }
 
@@ -133,7 +134,7 @@
 .stats {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 4px;
 }
 /* Scanline */
@@ -149,4 +150,12 @@
     transparent 4px
   );
   pointer-events: none;
+}
+
+#sprite {
+    transition: filter 0.3s ease;
+}
+
+.hidden-sprite {
+    filter: blur(10px) brightness(0);
 }

@@ -53,6 +53,8 @@ async function getRandomPokemon() {
     try {
         const randomId = Math.floor(Math.random() * 151) + 1;
 
+        document.getElementById("pokeNumber").innerText = String(randomId).padStart(3, "0");
+
         const pokemonRes = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
         const pokemonData = await pokemonRes.json();
 
@@ -68,9 +70,15 @@ async function getRandomPokemon() {
         currentPokemon = {
             name: pokemonData.name.toLowerCase(),
             entry: randomEntry.flavor_text.replace(/\f/g, " "),
+            sprite: pokemonData.sprites.front_default || `https://pokeapi.co/api/v2/pokemon/${randomId}.png`,
         };
 
         document.getElementById("entry").innerText = `"${currentPokemon.entry}"`;
+
+        document.getElementById("sprite").src = currentPokemon.sprite;
+        const spriteEl = document.getElementById("sprite");
+        spriteEl.src = currentPokemon.sprite;
+        spriteEl.classList.add("hidden-sprite");
 
     } catch (error) {
         console.error("Error fetching Pokémon:", error);
@@ -90,11 +98,13 @@ function checkGuess() {
     ) {
         feedback.innerHTML = "✅ Correct!";
         feedback.className = "mt-3 text-success fw-bold";
+        document.getElementById("sprite").classList.remove("hidden-sprite");
         streak++;
     } else {
         lives--;
         feedback.innerHTML = `❌ Wrong! It was <b>${capitalize(currentPokemon.name)}</b>`;
         feedback.className = "mt-3 text-danger fw-bold";
+        document.getElementById("sprite").classList.remove("hidden-sprite");
         streak = 0;
     }
 
